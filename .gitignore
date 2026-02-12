@@ -1,0 +1,31 @@
+# OS-specific
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.bak
+*.log
+
+# User-specific content is private by default.
+# Keep only broad folder skeletons via .gitkeep files.
+_user/*.md
+_user/data/**
+!_user/data/**/
+!_user/data/.gitkeep
+!_user/data/inbox/.gitkeep
+!_user/data/journal/.gitkeep
+!_user/data/knowledge/.gitkeep
+!_user/data/personal/.gitkeep
+!_user/data/projects/.gitkeep
+
+# Work-specific - if you accidentally copy work files here
+# DO NOT commit anything with company-specific details
