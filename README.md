@@ -2,8 +2,6 @@
 
 Plain-text personal knowledge system.
 
-Inspired by the broader Personal Knowledge Management/“Second Brain” idea popularized by Tiago Forte’s [Building a Second Brain](https://www.buildingasecondbrain.com/). This repo is a small Markdown-and-agent-oriented implementation, not an official or complete version of that method.
-
 ## Repository Layout
 
 - `AGENTS.md` - AI agent operating instructions
@@ -17,3 +15,7 @@ Inspired by the broader Personal Knowledge Management/“Second Brain” idea po
 - Content is Markdown-first.
 - The repo is intended to be version controlled.
 - The system can be changed by editing files directly or by instructing an AI agent to update the structure.
+
+## Credits
+
+Inspired by the broader Personal Knowledge Management/“Second Brain” idea popularized by Tiago Forte’s [Building a Second Brain](https://www.buildingasecondbrain.com/). This repo is a small Markdown-and-agent-oriented implementation, not an official or complete version of that method.
