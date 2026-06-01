@@ -10,6 +10,8 @@ It stores:
 - Journal notes and reminders
 - Quick inbox captures
 
+User data under `_user/` is local/private by default and is not committed, except for safe example and folder skeleton files.
+
 ## Core Idea
 
 Put information where your future self would naturally look for it.
@@ -33,7 +35,7 @@ If the right place is unclear, put it in the inbox and sort it later.
         ├── inbox/
         ├── journal/
         ├── knowledge/
-        ├── personal/
+        ├── life/
         └── projects/
 ```
 
@@ -65,7 +67,7 @@ Where should this go?
 - `_user/data/inbox/` - unsorted quick notes
 - `_user/data/journal/` - time-based notes and reminders
 - `_user/data/knowledge/` - reusable concepts, lessons, references, gotchas
-- `_user/data/personal/` - personal research and decisions
+- `_user/data/life/` - personal/life research and decisions
 - `_user/data/projects/` - active and archived project work
 
 ## Keep It Simple

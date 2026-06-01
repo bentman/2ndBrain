@@ -6,7 +6,7 @@ Use this when the user is learning, comparing options, testing something, or ask
 
 - Project-specific -> `_user/data/projects/[project]/research.md`
 - Reusable technical/conceptual -> `_user/data/knowledge/`
-- Personal -> `_user/data/personal/`
+- Personal/life -> `_user/data/life/`
 - Useful source/link collection -> `_user/data/knowledge/` unless the user has created a reference subfolder
 - Unclear -> `_user/data/inbox/quick-notes.md`
 

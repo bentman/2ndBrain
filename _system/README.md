@@ -7,6 +7,7 @@ Read `AGENTS.md` first. Use these files only when more detail is needed.
 ## Files
 
 - `interaction-style.md` - how to apply `_user/preferences.md`
+- `ROUTING.md` - simple destination rules
 - `workflows/research-capture.md` - capture research
 - `workflows/project-kickoff.md` - start project folders
 - `workflows/solution-design.md` - maintain project design work

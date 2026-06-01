@@ -32,7 +32,7 @@ Put information where it will be looked for later:
 - `_user/data/knowledge/` - durable concepts, lessons, references, patterns, and gotchas
 - `_user/data/projects/` - active project state, research, decisions, notes, and solutions
 - `_user/data/projects/` - completed or inactive projects can stay here or move into a user-created archive folder
-- `_user/data/personal/` - personal research and decisions
+- `_user/data/life/` - personal/life research and decisions
 - `_user/data/journal/` - time-based summaries, reminders, and temporal context
 - `_user/data/inbox/quick-notes.md` - unprocessed quick capture
 
@@ -60,7 +60,7 @@ Project-specific research goes in `_user/data/projects/[project]/research.md`.
 
 Reusable technical or conceptual research goes in `_user/data/knowledge/`.
 
-Personal research goes in `_user/data/personal/`.
+Personal or life research goes in `_user/data/life/`.
 
 ### Projects
 
@@ -107,6 +107,7 @@ When flagging a gap, name it and propose the smallest fix.
 - Do not duplicate project state outside the project folder.
 - Do not duplicate process rules across many files.
 - Use templates from `_system/templates/` when structure helps.
+- Use `_system/ROUTING.md` when routing is unclear.
 - Update `_system/` only when the process changes.
 - Update `AGENTS.md` only when durable routing or operating rules change.
 - Never force-add ignored `_user` content unless the user explicitly asks.
