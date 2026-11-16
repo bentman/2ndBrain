@@ -1,75 +1,55 @@
 # 2ndBrain User Guide
 
-2ndBrain is a simple plain-text system for keeping useful context out of chat history and in files.
-
-It stores:
-- User context and preferences
-- Projects and decisions
-- Reusable knowledge
-- Personal research
-- Journal notes and reminders
-- Quick inbox captures
-
-User data under `_user/` is local/private by default and is not committed, except for safe example and folder skeleton files.
+2ndBrain keeps useful context out of chat history and in plain files that you and an AI agent can both read.
 
 ## Core Idea
 
-Put information where your future self would naturally look for it.
+Put information where your future self would look for it. If the right place is unclear, put it in the inbox and sort it later.
 
-If the right place is unclear, put it in the inbox and sort it later.
+## Work And Life
+
+Everything you store lives in one of two domains, `work` or `life`. They have the same structure and never share content. Say which one you mean ("add to my work inbox", "weekly review for life"); the agent asks if it cannot tell.
 
 ## Structure
 
 ```text
-2ndBrain/
-├── AGENTS.md
-├── README.md
-├── USER_GUIDE.md
-├── _system/
-└── _user/
-    ├── facts.md
-    ├── preferences.md
-    ├── profile.md
-    ├── boundaries.md
-    └── data/
-        ├── inbox/
-        ├── journal/
-        ├── knowledge/
-        ├── life/
-        └── projects/
+_user/
+├── facts.md  preferences.md  boundaries.md
+├── inbox.md
+├── work/
+└── life/
 ```
 
-## How To Use It
+Inside each domain:
 
-Tell an AI agent:
+- `projects/` - things with a goal and an end
+- `areas/` - ongoing responsibilities
+- `knowledge/` - reusable notes and lessons
+- `archive/` - finished or inactive work
+- `journal/` - weekly summaries
+- `index.md` - a catalog the agent keeps current
+- `log.md` - a running record of what changed
+
+All of `_user/` is private and ignored by Git.
+
+## Common Requests
 
 ```text
-Read AGENTS.md and help me maintain this 2ndBrain.
-```
-
-Common requests:
-
-```text
+Set up my 2ndBrain
 Add to inbox: [note]
 Process inbox
+Start work project: [name]
 Capture this lesson: [lesson]
-Start project: [name]
 Find notes on [topic]
-Generate weekly summary
+Weekly review for life
+Lint
 Where should this go?
 ```
 
-## Where Things Go
+## The Weekly Habit
 
-- `_user/facts.md` - compact user facts
-- `_user/preferences.md` - communication and workflow preferences
-- `_user/boundaries.md` - privacy and handling rules
-- `_user/data/inbox/` - unsorted quick notes
-- `_user/data/journal/` - time-based notes and reminders
-- `_user/data/knowledge/` - reusable concepts, lessons, references, gotchas
-- `_user/data/life/` - personal/life research and decisions
-- `_user/data/projects/` - active and archived project work
+Once a week, per domain, ask for a weekly review. The agent empties the inbox with you, checks every project has a next action, archives finished work, flags gaps, and writes the week's journal entry. It should take minutes.
 
 ## Keep It Simple
 
-The system is intentionally easy to change. If a pattern emerges, tell the agent to adjust the structure or instructions. If something feels like overhead, simplify it.
+If a pattern emerges, tell the agent to adjust the structure or instructions. If something feels like overhead, remove it. `_system/METHOD.md` explains where the ideas come from.

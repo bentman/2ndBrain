@@ -4,125 +4,112 @@
 
 2ndBrain is a plain-text knowledge system. Your job is to help maintain it so information is easy to capture, find, and reuse.
 
-`AGENTS.md` is only for durable operating rules. Do not store current status, user facts, project details, research findings, or reminders here.
+`AGENTS.md` holds durable operating rules only. Do not store status, user facts, project details, research findings, or reminders here.
 
-The system is split into two portable layers:
-- `_system/` - reusable process, templates, and agent guidance
-- `_user/` - one user's facts, preferences, boundaries, and private local data
+Two layers:
+- `_system/` - reusable method, workflows, and templates
+- `_user/` - one user's private context and notes, split into `work/` and `life/`
 
-The repository is meant to be public-safe. `_user/*.md` and `_user/data/**` content are ignored by Git; only `.gitkeep` folder skeletons should be tracked.
-
-In a fresh clone, private `_user` Markdown files may not exist. Create or update them locally only when needed.
+The repository is public-safe. Everything under `_user/` is ignored by Git except `README.md` and `.gitkeep` skeletons. Never force-add ignored `_user` content unless the user explicitly asks.
 
 ## Load Order
 
 1. Read this file.
-2. Read `_user/facts.md` only when user context matters.
-3. Read `_user/preferences.md` only when tone or workflow behavior matters.
-4. Read `_user/boundaries.md` before storing sensitive, work-derived, or personal information.
-5. Read `_user/data/` files only as needed for the task.
-6. Read `_system/` files only when this file is not enough.
+2. Read `_user/boundaries.md` before storing sensitive, personal, or work-derived information.
+3. Read `_user/facts.md` and `_user/preferences.md` only when user context or tone matters.
+4. Read the active domain's `index.md`, then only the files the task needs.
+5. Read `_system/` files only when this file is not enough.
 
-## Routing Rules
+If the private `_user` files do not exist yet, run **Setup** below.
 
-Put information where it will be looked for later:
+## Domains: Work and Life
 
-- `_user/` - user facts, profile, preferences, boundaries, and data
-- `_system/` - portable process rules, templates, and system maintenance docs
-- `_user/data/knowledge/` - durable concepts, lessons, references, patterns, and gotchas
-- `_user/data/projects/` - active project state, research, decisions, notes, and solutions
-- `_user/data/projects/` - completed or inactive projects can stay here or move into a user-created archive folder
-- `_user/data/life/` - personal/life research and decisions
-- `_user/data/journal/` - time-based summaries, reminders, and temporal context
-- `_user/data/inbox/quick-notes.md` - unprocessed quick capture
+Everything the user stores belongs to exactly one domain: `_user/work/` or `_user/life/`.
 
-If content fits more than one place, choose the smallest useful home and link to related files. Do not duplicate.
+- Every task has one active domain. Infer it from the request; if it is unclear, ask once.
+- Read and write only inside the active domain, plus `_user/*.md` and `_user/inbox.md`.
+- Never copy, move, or summarize content from one domain into the other. If a note must point across, use a bare link with no details.
+- Indexes, logs, journals, and reviews are per domain. Never combine them.
+- Search both domains only when the user explicitly asks, and label each result with its domain.
+- Shared user context (`facts.md`, `preferences.md`, `boundaries.md`) stays in `_user/` and holds no work-confidential detail.
+
+## Where Things Go
+
+Inside each domain, file by how actionable the content is:
+
+| Folder | Holds |
+|---|---|
+| `projects/[name]/` | Work with a goal and an end. Always has a next action. |
+| `areas/` | Ongoing responsibilities with no end date (health, finances, a team, a system). |
+| `knowledge/` | Reusable notes: concepts, lessons, references, gotchas. |
+| `archive/` | Finished or inactive projects and areas, moved here whole. |
+| `journal/[year]/[year]-W[week].md` | Weekly summaries and time-based context. |
+| `index.md` | Catalog: one line per project, area, and knowledge note. |
+| `log.md` | Append-only record of what was added, reviewed, or cleaned up. |
+
+`_user/inbox.md` is the single capture point for both domains.
+
+Keep it shallow: no folder deeper than two levels below a domain. If content fits more than one place, choose the most actionable home and link. Do not duplicate.
 
 ## Core Loop
 
-For any task:
+1. **Capture** - Get it written down. If the destination is unclear, use `_user/inbox.md`.
+2. **Organize** - Pick the domain, then the folder. Search for an existing file before creating one.
+3. **Distill** - Keep what is useful: decisions, facts, dates, sources, open questions. Start each note with a one-line `Summary:`.
+4. **Express** - Use it: answer, draft, decide. File reusable results back as notes.
 
-1. **Classify** - Decide what type of information this is.
-2. **Check** - Search for an existing file before creating a new one.
-3. **Update** - Add only useful context, decisions, facts, dates, sources, and open questions.
-4. **Link** - Connect related projects, knowledge, journal entries, or user facts.
-5. **Stop** - Do not add structure beyond what the task needs.
+Stop when the content is findable and useful. Do not add structure beyond what the task needs.
 
-## Common Actions
+## Operations
 
-### Quick Capture
+**Ingest** - when storing something:
+1. File it per the table above.
+2. Add or update its line in the domain `index.md`: `- [Title](path) - one-line summary`.
+3. Append to the domain `log.md`: `- [YYYY-MM-DD] ingest | Title -> path`.
 
-Use `_user/data/inbox/quick-notes.md` when the destination is unclear or the user wants friction-free capture.
+**Query** - when answering from stored context:
+1. Read the active domain's `index.md` first, then the files it points to. Search the domain if the index is not enough.
+2. Cite the files used. Say whether the answer is certain, partial, or missing.
+3. Offer to file a reusable answer as a knowledge note.
 
-### Research
+**Lint** - during a weekly review or when asked, flag and propose the smallest fix for:
+- Notes missing from `index.md`, or index lines pointing to missing files
+- Notes with no links in or out
+- Projects with no next action, or finished projects not yet archived
+- Decisions or progress that exist only in chat
+- Content in the wrong domain, or user facts outside `_user/`
+- Duplicated notes, stale claims, broken links
+- Anything Git would track under `_user/` beyond the skeleton
 
-Project-specific research goes in `_user/data/projects/[project]/research.md`.
+Log reviews and lint passes in `log.md` the same way as ingests.
 
-Reusable technical or conceptual research goes in `_user/data/knowledge/`.
+## Notes
 
-Personal or life research goes in `_user/data/life/`.
+- One idea per knowledge note. The title states the idea.
+- Link related notes with relative Markdown links.
+- Update an existing note rather than writing a near-duplicate.
+- Distill when a note is reused, not upfront.
+- One-off answers do not need a file unless the user asks or the pattern repeats.
 
-### Projects
+## Setup
 
-Use a project folder when work has a goal, constraints, decisions, or multiple sessions.
+On "set up my 2ndBrain", or when private files are missing and needed:
 
-Core files:
-- `README.md` - purpose, status, goals, constraints, links
-- `research.md` - investigation and sources
-- `decisions.md` - choices and reasoning
-- `notes.md` - running log and open questions
-- `solutions.md` - final or emerging implementation details, when useful
+1. Copy `_system/templates/user/*.md` to `_user/` and ask the user only what is needed to fill them.
+2. Create `_user/inbox.md`.
+3. Create `index.md` and `log.md` in `_user/work/` and `_user/life/`.
 
-### Knowledge Transfer
-
-Reusable explanations go in `_user/data/knowledge/`. Create topic subfolders only when the user needs them.
-
-One-off explanations do not need permanent files unless the user asks or the pattern repeats.
-
-### Journal
-
-Use `_user/data/journal/[year]/[year]-W[week].md` for weekly summaries and temporal context.
-
-Follow reminder behavior in `_user/boundaries.md`.
-
-## Gap Handling
-
-Flag gaps when they reduce future usefulness:
-
-- A repeated topic has no durable note in `_user/data/knowledge/`.
-- A project has decisions or progress only in chat.
-- A file references missing or stale content.
-- User facts appear outside `_user/`.
-- User data appears outside `_user/data/`.
-- Process docs are longer or more complex than the actual workflow.
-- Git would track private `_user` content.
-
-When flagging a gap, name it and propose the smallest fix.
+No scripts are needed.
 
 ## Editing Rules
 
 - Keep Markdown simple.
 - Prefer updating existing files over creating new ones.
-- Do not duplicate user facts outside `_user/`.
-- Do not duplicate project state outside the project folder.
-- Do not duplicate process rules across many files.
-- Use templates from `_system/templates/` when structure helps.
-- Use `_system/ROUTING.md` when routing is unclear.
-- Update `_system/` only when the process changes.
-- Update `AGENTS.md` only when durable routing or operating rules change.
-- Never force-add ignored `_user` content unless the user explicitly asks.
-
-## Query Rules
-
-When answering from stored context:
-
-1. Search `_user/data/knowledge/`.
-2. Search active `_user/data/projects/`.
-3. Search `_user/data/journal/`.
-4. Search `_user/` only for user-specific context.
-
-Say what you checked and whether the answer is certain, partial, or missing.
+- Do not duplicate user facts, project state, or process rules across files.
+- Use `_system/templates/` when structure helps and `_system/workflows/` when a task needs more detail.
+- Update `_system/` and `AGENTS.md` only when the process itself changes.
+- If the user corrects tone or workflow behavior, update `_user/preferences.md`.
 
 ## Default Behavior
 
-Be concise, direct, and practical. Ask focused questions only when needed. Preserve useful information in the smallest appropriate place.
+Be concise, direct, and practical. Answer quick questions directly. Ask focused questions only when needed, or state a low-risk assumption. Preserve useful information in the smallest appropriate place.

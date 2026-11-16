@@ -1,38 +1,29 @@
 # User Layer
 
-This folder is the local user layer for 2ndBrain.
+This folder is the private user layer for 2ndBrain.
 
-Tracked files here should stay public-safe. Real user context and data are private by default and ignored by Git.
+Everything here is ignored by Git except this README and the empty folder skeleton. Real context and notes stay local.
 
-## Local Files
-
-Create these local files as needed:
-
-- `facts.md` - compact facts an agent may need
-- `preferences.md` - communication and workflow preferences
-- `profile.md` - optional background context
-- `boundaries.md` - privacy, safety, and handling rules
-
-These files are intentionally ignored by Git.
-
-## Data Folders
-
-User data belongs under `data/`:
+## Layout
 
 ```text
-_user/data/
-├── inbox/
-├── journal/
-├── knowledge/
-├── life/
-└── projects/
+_user/
+├── facts.md          compact facts an agent may need
+├── preferences.md    communication and workflow preferences
+├── boundaries.md     privacy and handling rules
+├── inbox.md          quick capture for both domains
+├── work/
+│   ├── index.md  log.md
+│   └── projects/  areas/  knowledge/  archive/  journal/
+└── life/
+    ├── index.md  log.md
+    └── projects/  areas/  knowledge/  archive/  journal/
 ```
 
-Only the broad folder skeletons are tracked. Notes, project files, journal entries, and other user data stay local unless the user explicitly changes the Git rules.
+The Markdown files are created by the agent on "set up my 2ndBrain", from the starters in `_system/templates/user/`.
 
-## Maintenance Rules
+## Rules
 
-- Keep user facts out of `AGENTS.md`.
-- Keep portable process in `_system/`.
-- Store private context and data under `_user/`.
+- Work and life never share content. Each domain has its own index, log, journal, and reviews.
+- Keep user facts out of `AGENTS.md` and `_system/`.
 - Do not force-add ignored `_user` content unless the user explicitly asks.

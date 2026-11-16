@@ -15,18 +15,10 @@ desktop.ini
 *.bak
 *.log
 
-# User-specific content is private by default.
-# Keep only broad folder skeletons via .gitkeep files.
-_user/*.md
+# Everything under _user/ is private by default.
+# Only the README and the work/life folder skeleton are tracked.
+_user/**
+!_user/**/
 !_user/README.md
-_user/data/**
-!_user/data/**/
-!_user/data/.gitkeep
-!_user/data/inbox/.gitkeep
-!_user/data/journal/.gitkeep
-!_user/data/knowledge/.gitkeep
-!_user/data/life/.gitkeep
-!_user/data/projects/.gitkeep
-
-# Work-specific - if you accidentally copy work files here
-# DO NOT commit anything with company-specific details
+!_user/work/*/.gitkeep
+!_user/life/*/.gitkeep
