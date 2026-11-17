@@ -32,7 +32,7 @@ Inside each domain:
 - `index.md` - a catalog the agent keeps current
 - `log.md` - a running record of what changed
 
-All of `_user/` is private and ignored by this repository, and a commit guard blocks it from being committed here even by mistake. See Backup below for keeping versions of it.
+Your notes under `_user/` are private: this repository ignores them, and once enabled a commit guard stops a forced add from committing them here. Only `_user/README.md` and the empty folder skeleton are public. See Backup below for keeping versions of your notes.
 
 ## Common Requests
 
@@ -60,6 +60,10 @@ Once a week, per domain, ask for a weekly review. The agent empties the inbox wi
 Your notes are not stored in this repository's history. To keep versions of them, let the agent turn `_user/` into its own private Git repository during setup, or run `git init` there yourself. Add a private remote if you want a copy off this machine.
 
 The agent then commits after each weekly review, after any large change, and when you say "back up my notes". It pushes only as your `preferences.md` says, and only after checking the remote is private.
+
+The backup holds both work and life. If work notes must not leave this machine, tell the agent to keep `work/` out of the backup before you add any.
+
+To restore on a new machine, clone 2ndBrain, then inside `_user/` run `git init`, `git remote add origin <your private repo>`, `git fetch origin`, and `git checkout -B main origin/main`.
 
 ## Keep It Simple
 

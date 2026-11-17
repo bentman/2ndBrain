@@ -4,7 +4,7 @@ Use this when work has a goal, an end, and more than one session.
 
 ## Start
 
-Create `[domain]/projects/[short-lowercase-name]/` with:
+Create `_user/[domain]/projects/[short-lowercase-name]/` with:
 
 - `README.md` - purpose, status, next action, goals, constraints (use `_system/templates/project-readme.md`)
 - `notes.md` - running log and open questions
@@ -23,15 +23,15 @@ Then add the project to the domain `index.md` and `log.md`.
 
 - Keep all project state in the project folder.
 - Keep **Next action** in the README current. A project without one is stalled.
-- Record a decision when a future reader might ask "why did we do it this way?" Use `_system/templates/decision-log.md` for significant ones.
+- Record a decision when a future reader might ask "why did we do it this way?" Append each to the project's `decisions.md`; use the structure in `_system/templates/decision-log.md` for significant ones.
 - Move details from `notes.md` to `solutions.md` once they are stable.
 
 ## Close
 
 1. Set the README status to Complete or Dropped, with the date and outcome.
 2. Extract reusable lessons into `knowledge/` notes.
-3. Move the whole folder to `[domain]/archive/`.
-4. Update `index.md` and append to `log.md`.
+3. Move the whole folder to `_user/[domain]/archive/`.
+4. Move its line in `index.md` under Archive with the new path, and append to `log.md`.
 
 ## Areas vs Projects
 

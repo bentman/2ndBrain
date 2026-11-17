@@ -16,7 +16,7 @@ Do not sort, rewrite, or ask questions at capture time. If the destination is al
 
 ## Process Inbox
 
-First move every item in `_user/inbox.md` to a domain inbox, asking where it is not obvious. Then, for each item in the domain's `inbox.md`, top to bottom:
+First move the items in `_user/inbox.md` that belong to the active domain into its `inbox.md`, asking where it is not obvious. Leave the other domain's items for that domain's session. Then, for each item in the domain's `inbox.md`, top to bottom:
 
 1. **Decide** - one of:
    - Delete: no longer useful

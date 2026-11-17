@@ -12,7 +12,7 @@ Before doing anything else, read `BRAIN_PATH/AGENTS.md` and follow it. It is the
 Two rules to hold even before that file is loaded:
 
 - Every task belongs to one domain, `work` or `life`. If it is unclear, ask once. Never copy or summarize content from one domain into the other.
-- Everything under `_user/` is private. Never commit it to the 2ndBrain repository or send it anywhere; the only place it is committed is the user's own backup repository inside `_user/`, as `AGENTS.md` describes.
+- Everything under `_user/` is private. Never commit it to the 2ndBrain repository or send it anywhere. The one exception is the user's own private backup repository inside `_user/`, committed and pushed only as `AGENTS.md` describes.
 
 Requests you handle:
 

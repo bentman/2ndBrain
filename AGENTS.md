@@ -10,7 +10,7 @@ Two layers:
 - `_system/` - reusable method, workflows, and templates
 - `_user/` - one user's private context and notes, split into `work/` and `life/`
 
-This repository is public-safe. It ignores everything under `_user/` except `README.md` and `.gitkeep` skeletons. Never force-add ignored `_user` content to it; the commit guard in `_system/hooks/` blocks that. Private notes are versioned only in the separate backup repository described under **Backup**.
+This repository is public-safe. It ignores everything under `_user/` except `README.md` and `.gitkeep` skeletons. Never force-add ignored `_user` content to it, never write notes outside `_user/`, and never bypass the commit guard in `_system/hooks/`. The guard is a safety net, not a guarantee: it works only in clones where it is enabled and does not run on merges. Private notes are versioned only in the separate backup repository described under **Backup**.
 
 ## Load Order
 
@@ -18,14 +18,14 @@ This repository is public-safe. It ignores everything under `_user/` except `REA
 2. Read `_user/boundaries.md` before storing sensitive, personal, or work-derived information.
 3. Read `_user/facts.md` and `_user/preferences.md` only when user context or tone matters.
 4. Read the active domain's `index.md`, then only the files the task needs.
-5. Glance at the active domain's `log.md`. If the last `review` entry is more than a week old, mention it once.
+5. Glance at the active domain's `log.md`. If the last `review` entry is more than a week old, say so once at the start of the session. If there is no `review` entry yet, say nothing.
 6. Read `_system/` files only when this file is not enough.
 
 If the private `_user` files do not exist yet, run **Setup** below.
 
 ## Domains: Work and Life
 
-Everything the user stores belongs to exactly one domain: `_user/work/` or `_user/life/`.
+Everything the user stores belongs to exactly one domain: `_user/work/` or `_user/life/`. Domains exist only under `_user/`; never create `work/` or `life/` anywhere else.
 
 - Every task has one active domain. Infer it from the request; if it is unclear, ask once.
 - Read and write only inside the active domain, plus the shared `_user/*.md` files.
@@ -44,19 +44,19 @@ Inside each domain, file by how actionable the content is:
 | `areas/` | Ongoing responsibilities with no end date (health, finances, a team, a system). |
 | `knowledge/` | Reusable notes: concepts, lessons, references, gotchas. |
 | `archive/` | Finished or inactive projects and areas, moved here whole. |
-| `journal/[year]/[year]-W[week].md` | Weekly summaries, reminders, and time-based context. Raise reminders as `_user/boundaries.md` says. |
+| `journal/[year]/[year]-W[week].md` | Weekly summaries, reminders, and time-based context, by ISO week with two digits (`2026-W03`). Raise reminders as `_user/boundaries.md` says. |
 | `inbox.md` | Unsorted quick capture for this domain. |
 | `someday.md` | Ideas not being acted on yet. One line each. |
-| `index.md` | Catalog: one line per project, area, and knowledge note. |
+| `index.md` | Catalog: one line per project, area, and knowledge note, under the headings Projects, Areas, Knowledge, Archive. |
 | `log.md` | Append-only record of what was added, reviewed, or cleaned up. |
 
-`_user/inbox.md` holds only items whose domain is not yet known. Move them to a domain inbox as soon as it is.
+`_user/inbox.md` holds only items whose domain is not yet known. Move them to a domain inbox as soon as it is. It is the one file both domains share, so keep it empty and keep confidential work detail out of it.
 
 Keep it shallow: no folder deeper than two levels below a domain. If content fits more than one place, choose the most actionable home and link. Do not duplicate.
 
 ## Core Loop
 
-1. **Capture** - Get it written down. If the destination is unclear, use the domain's `inbox.md`.
+1. **Capture** - Get it written down. If the destination is unclear, use the domain's `inbox.md`. If the domain itself is unclear, ask once; if asking would interrupt, use `_user/inbox.md`.
 2. **Organize** - Pick the domain, then the folder. Search for an existing file before creating one.
 3. **Distill** - Keep what is useful: decisions, facts, dates, sources, open questions. Start each note with a one-line `Summary:`.
 4. **Express** - Use it: answer, draft, decide. File reusable results back as notes.
@@ -77,7 +77,7 @@ Stop when the content is findable and useful. Do not add structure beyond what t
 
 **Save session** - on "save this session", or when a conversation produced decisions or progress that exist only in chat:
 1. Pick the domain and the project or note it belongs to.
-2. Distill, do not transcribe: decisions with reasons go to `decisions.md`, progress and open questions to `notes.md`, reusable lessons to `knowledge/`.
+2. Distill, do not transcribe: decisions with reasons are appended to the project's `decisions.md`, progress and open questions to `notes.md`, reusable lessons to `knowledge/`.
 3. Update the project's next action, then follow Ingest for anything new.
 
 **Lint** - during a weekly review or when asked, flag and propose the smallest fix for:
@@ -88,7 +88,7 @@ Stop when the content is findable and useful. Do not add structure beyond what t
 - Decisions or progress that exist only in chat
 - Content in the wrong domain, or user facts outside `_user/`
 - Duplicated notes, stale claims, broken links
-- Anything Git would track under `_user/` beyond the skeleton, or the commit guard not enabled (`git config core.hooksPath` should print `_system/hooks`)
+- Anything Git would track under `_user/` beyond the skeleton, or the commit guard not enabled (`git config core.hooksPath`, run in the repository root, should print `_system/hooks`)
 
 Log reviews and lint passes in `log.md` the same way as ingests.
 
@@ -106,7 +106,7 @@ On "set up my 2ndBrain", or when private files are missing and needed:
 
 1. Copy `_system/templates/user/*.md` to `_user/` and ask the user only what is needed to fill them.
 2. Create `_user/inbox.md`, and `inbox.md`, `index.md`, and `log.md` in `_user/work/` and `_user/life/`. Create `someday.md` when first needed.
-3. Enable the commit guard: `git config core.hooksPath _system/hooks`. It blocks any commit of private `_user` content to this repository, even a forced add. Never bypass it with `--no-verify`.
+3. Enable the commit guard from the repository root: `git config core.hooksPath _system/hooks`. Once enabled it blocks commits of private content to this repository, even a forced add. Never bypass it with `--no-verify`.
 4. Offer to set up Backup below.
 
 See `_system/example/` for what filled-in files look like. The commit guard is the only script.
@@ -115,12 +115,14 @@ See `_system/example/` for what filled-in files look like. The commit guard is t
 
 Private notes are not part of this repository's history. Back them up as a separate private Git repository inside `_user/`:
 
-- Set up once, with the user's agreement: `git init` in `_user/`. The outer repository ignores it. The user adds a private remote if they want an off-machine copy.
+- Set up once, with the user's agreement: `git init` in `_user/`. The outer repository ignores it. The user adds a private remote if they want an off-machine copy. Create `_user/.gitignore` containing `/README.md` and `.gitkeep`, so the two repositories never track the same file.
 - If `_user/.git` exists, commit there after each weekly review, after any large change, and on "back up my notes", with a one-line message. Never commit private content to the outer repository.
 - Push only when the user asks or the Backup setting in `_user/preferences.md` says to.
 - Before every push, check that the remote is private (for GitHub: `gh repo view --json isPrivate`). If it is public or cannot be checked, do not push; tell the user.
 - The backup repository's remote and branch live in `_user/.git`. Never write its URL into tracked files.
-- One backup repository holds both domains. If work content must not leave a work machine or account, say so in `_user/boundaries.md` and do not push.
+- One backup repository holds both domains, so a push sends work content wherever life content goes. During setup, ask whether that is acceptable. If work content must stay local, add `/work/` to `_user/.gitignore` before any work note is committed, and record it in `_user/boundaries.md`.
+- Never run `git clean` in the outer repository; it deletes uncommitted private notes.
+- Restore on a new machine: clone this repository, then in `_user/` run `git init`, `git remote add origin <url>`, `git fetch origin`, `git checkout -B main origin/main`.
 
 ## Editing Rules
 

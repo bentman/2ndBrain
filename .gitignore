@@ -22,3 +22,7 @@ _user/**
 !_user/README.md
 !_user/work/*/.gitkeep
 !_user/life/*/.gitkeep
+
+# Domain folders belong under _user/ only.
+/work/
+/life/

@@ -11,5 +11,6 @@ Compact facts an agent may need. Keep it short and current. No work-confidential
 - [Editors, platforms, devices that affect how help should be given]
 
 ## Current Focus
+One general line each. No confidential detail.
 - Work:
 - Life:

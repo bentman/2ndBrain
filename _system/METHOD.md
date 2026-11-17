@@ -27,7 +27,7 @@ Add one only when a real, repeated need shows up.
 
 ## Work and Life
 
-The two domains have the same structure and never share content. This keeps employer-confidential material in one place that can be excluded, relocated, or deleted as a unit, and keeps personal material out of work contexts. Each domain has its own inbox, so the two do not mix even before filing.
+The two domains have the same structure and never share content. This keeps employer-confidential material in one folder that can be left out of the backup or handled on its own, and keeps personal material out of work contexts. The separation is a rule the agent follows, not a technical barrier, and work notes committed to a shared backup become part of its history. Each domain has its own inbox, so the two do not mix even before filing.
 
 ## Files In `_system/`
 

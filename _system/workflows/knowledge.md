@@ -4,7 +4,7 @@ Use this when research, a lesson, or an explanation is worth reusing.
 
 ## Route
 
-- Reusable beyond one project -> `[domain]/knowledge/`
+- Reusable beyond one project -> `_user/[domain]/knowledge/`
 - Only matters to one project -> that project's `research.md` or `notes.md`
 - One-off answer -> answer directly; no file unless asked
 
