@@ -6,7 +6,7 @@ A plain-text personal knowledge system maintained with an AI agent. Markdown onl
 
 - `AGENTS.md` - the agent's operating rules (single source of truth)
 - `USER_GUIDE.md` - how to use it day to day
-- `_system/` - method, workflows, templates, and the portable agent definition
+- `_system/` - method, workflows, templates, a worked example, and the portable agent definition
 - `_user/` - your private context and notes, split into `work/` and `life/` (ignored by Git)
 
 ## Setup
@@ -30,7 +30,7 @@ The file only points to `AGENTS.md`, so the rules never need to be kept in sync.
 
 ## Notes
 
-- Your notes are not version controlled by this repository. Back up `_user/` however you back up other private files.
+- Your notes are not version controlled by this repository. To back them up, make `_user/` its own private Git repository (`git init` inside it, plus a private remote if wanted); this repository ignores it. The agent offers this during setup.
 - The system is meant to be changed. Edit the files, or tell the agent to adjust them.
 
 ## Credits

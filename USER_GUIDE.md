@@ -15,7 +15,7 @@ Everything you store lives in one of two domains, `work` or `life`. They have th
 ```text
 _user/
 ├── facts.md  preferences.md  boundaries.md
-├── inbox.md
+├── inbox.md          only for items with no domain yet
 ├── work/
 └── life/
 ```
@@ -27,6 +27,8 @@ Inside each domain:
 - `knowledge/` - reusable notes and lessons
 - `archive/` - finished or inactive work
 - `journal/` - weekly summaries
+- `inbox.md` - quick capture, sorted later
+- `someday.md` - ideas you are not acting on yet
 - `index.md` - a catalog the agent keeps current
 - `log.md` - a running record of what changed
 
@@ -36,8 +38,10 @@ All of `_user/` is private and ignored by Git.
 
 ```text
 Set up my 2ndBrain
-Add to inbox: [note]
-Process inbox
+Add to work inbox: [note]
+Process life inbox
+Save this session
+Someday: [idea]
 Start work project: [name]
 Capture this lesson: [lesson]
 Find notes on [topic]
@@ -48,7 +52,11 @@ Where should this go?
 
 ## The Weekly Habit
 
-Once a week, per domain, ask for a weekly review. The agent empties the inbox with you, checks every project has a next action, archives finished work, flags gaps, and writes the week's journal entry. It should take minutes.
+Once a week, per domain, ask for a weekly review. The agent empties the inbox with you, checks every project has a next action, archives finished work, flags gaps, and writes the week's journal entry. It should take minutes. If a week goes by without one, the agent mentions it once.
+
+## Backup
+
+Your notes are not stored in this repository's history. To keep versions of them, let the agent turn `_user/` into its own private Git repository during setup, or run `git init` there yourself. Add a private remote if you want a copy off this machine. The agent then commits after each review.
 
 ## Keep It Simple
 

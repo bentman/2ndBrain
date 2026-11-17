@@ -11,12 +11,12 @@ _user/
 ├── facts.md          compact facts an agent may need
 ├── preferences.md    communication and workflow preferences
 ├── boundaries.md     privacy and handling rules
-├── inbox.md          quick capture for both domains
+├── inbox.md          holding place for items with no domain yet
 ├── work/
-│   ├── index.md  log.md
+│   ├── inbox.md  someday.md  index.md  log.md
 │   └── projects/  areas/  knowledge/  archive/  journal/
 └── life/
-    ├── index.md  log.md
+    ├── inbox.md  someday.md  index.md  log.md
     └── projects/  areas/  knowledge/  archive/  journal/
 ```
 
@@ -24,6 +24,7 @@ The Markdown files are created by the agent on "set up my 2ndBrain", from the st
 
 ## Rules
 
-- Work and life never share content. Each domain has its own index, log, journal, and reviews.
+- Work and life never share content. Each domain has its own inbox, index, log, journal, and reviews.
+- To back up, make this folder its own private Git repository (`git init` here). The outer repository ignores it.
 - Keep user facts out of `AGENTS.md` and `_system/`.
 - Do not force-add ignored `_user` content unless the user explicitly asks.
