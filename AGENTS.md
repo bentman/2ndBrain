@@ -10,7 +10,7 @@ Two layers:
 - `_system/` - reusable method, workflows, and templates
 - `_user/` - one user's private context and notes, split into `work/` and `life/`
 
-This repository is public-safe. It ignores everything under `_user/` except `README.md` and `.gitkeep` skeletons. Never force-add ignored `_user` content to it, never write notes outside `_user/`, and never bypass the commit guard in `_system/hooks/`. The guard is a safety net, not a guarantee: it works only in clones where it is enabled and does not run on merges. Private notes are versioned only in the separate backup repository described under **Backup**.
+This repository is public-safe. It ignores everything under `_user/` except `README.md` and `.gitkeep` skeletons. Never force-add ignored `_user` content to it, never write notes outside `_user/`, and never bypass the commit guard in `_system/hooks/` (no `--no-verify`). The guard works only where enabled and does not run on merges, so do not rely on it. Private notes are versioned only in the backup repository described under **Backup**.
 
 ## Load Order
 
@@ -50,7 +50,7 @@ Inside each domain, file by how actionable the content is:
 | `index.md` | Catalog: one line per project, area, and knowledge note, under the headings Projects, Areas, Knowledge, Archive. |
 | `log.md` | Append-only record of what was added, reviewed, or cleaned up. |
 
-`_user/inbox.md` holds only items whose domain is not yet known. Move them to a domain inbox as soon as it is. It is the one file both domains share, so keep it empty and keep confidential work detail out of it.
+`_user/inbox.md` holds only items whose domain is not yet known. Move them to a domain inbox as soon as it is. Keep it empty, and keep confidential work detail out of it.
 
 Keep it shallow: no folder deeper than two levels below a domain. If content fits more than one place, choose the most actionable home and link. Do not duplicate.
 
@@ -106,10 +106,10 @@ On "set up my 2ndBrain", or when private files are missing and needed:
 
 1. Copy `_system/templates/user/*.md` to `_user/` and ask the user only what is needed to fill them.
 2. Create `_user/inbox.md`, and `inbox.md`, `index.md`, and `log.md` in `_user/work/` and `_user/life/`. Create `someday.md` when first needed.
-3. Enable the commit guard from the repository root: `git config core.hooksPath _system/hooks`. Once enabled it blocks commits of private content to this repository, even a forced add. Never bypass it with `--no-verify`.
+3. Enable the commit guard from the repository root: `git config core.hooksPath _system/hooks`.
 4. Offer to set up Backup below.
 
-See `_system/example/` for what filled-in files look like. The commit guard is the only script.
+See `_system/example/` for what filled-in files look like.
 
 ## Backup
 
@@ -120,7 +120,7 @@ Private notes are not part of this repository's history. Back them up as a separ
 - Push only when the user asks or the Backup setting in `_user/preferences.md` says to.
 - Before every push, check that the remote is private (for GitHub: `gh repo view --json isPrivate`). If it is public or cannot be checked, do not push; tell the user.
 - The backup repository's remote and branch live in `_user/.git`. Never write its URL into tracked files.
-- One backup repository holds both domains, so a push sends work content wherever life content goes. During setup, ask whether that is acceptable. If work content must stay local, add `/work/` to `_user/.gitignore` before any work note is committed, and record it in `_user/boundaries.md`.
+- One backup repository holds both domains. During setup, ask whether work notes may be backed up. If not, add `/work/` to `_user/.gitignore` before any work note is committed, and record it in `_user/boundaries.md`.
 - Never run `git clean` in the outer repository; it deletes uncommitted private notes.
 - Restore on a new machine: clone this repository, then in `_user/` run `git init`, `git remote add origin <url>`, `git fetch origin`, `git checkout -B main origin/main`.
 

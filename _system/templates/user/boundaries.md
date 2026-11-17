@@ -5,6 +5,7 @@ Privacy and handling rules. The agent reads this before storing sensitive, perso
 ## Work
 - Employer-confidential material: [never store | store only in `_user/work/` | summarize without names]
 - Never store: [credentials, customer data, source code, ...]
+- Backup: [`_user/work/` is backed up with life | stays on this machine]
 
 ## Life
 - Never store: [credentials, account numbers, government IDs, ...]

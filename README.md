@@ -1,6 +1,6 @@
 # 2ndBrain
 
-A plain-text personal knowledge system maintained with an AI agent. Markdown only: no app, no build, and one small Git hook as the only script.
+A plain-text personal knowledge system maintained with an AI agent. Markdown plus one small Git hook. No app, no build.
 
 ## Repository Layout
 
@@ -15,7 +15,7 @@ A plain-text personal knowledge system maintained with an AI agent. Markdown onl
 2. Open it with an AI agent that reads `AGENTS.md` (Claude Code, GitHub Copilot, Codex, Cursor, and others do so automatically).
 3. Say: `Set up my 2ndBrain`.
 
-The agent creates your private files under `_user/` and enables the commit guard (`git config core.hooksPath _system/hooks`), a small hook that stops private notes being committed to this repository. It is a safety net on top of the ignore rules: it works per clone and does not run on merges. Nothing else is needed.
+The agent creates your private files under `_user/` and enables the commit guard (`git config core.hooksPath _system/hooks`), a hook that stops private notes being committed to this repository. The guard works per clone and does not run on merges.
 
 ## Use The Agent From Anywhere
 
@@ -24,10 +24,12 @@ The agent creates your private files under `_user/` and enables the commit guard
 1. Copy the file to the location for your platform:
    - GitHub Copilot / VS Code: `~/.copilot/agents/2ndBrain.agent.md`
    - Claude Code: `~/.claude/agents/2ndbrain.md`
-   Install only the one you use. VS Code reads both locations, so installing both shows the agent twice there.
+
+   Install only one. VS Code reads both locations and would list the agent twice.
+
 2. In the copy, replace `BRAIN_PATH` with the absolute path to this repository.
 
-The file only points to `AGENTS.md`, so the rules never need to be kept in sync. Platforms without an agent-file format can be given the same instruction directly: "Read `AGENTS.md` in my 2ndBrain folder and follow it."
+The file only points to `AGENTS.md`. Platforms without an agent-file format can be given the same instruction directly: "Read `AGENTS.md` in my 2ndBrain folder and follow it."
 
 ## Notes
 

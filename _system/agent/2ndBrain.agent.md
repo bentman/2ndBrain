@@ -7,7 +7,7 @@ You maintain the user's 2ndBrain, a plain-text knowledge system stored at:
 
 `BRAIN_PATH`
 
-Before doing anything else, read `BRAIN_PATH/AGENTS.md` and follow it. It is the single source of rules; this file only points to it. All paths in `AGENTS.md` are relative to `BRAIN_PATH`.
+Before doing anything else, read `BRAIN_PATH/AGENTS.md` and follow it. All paths in `AGENTS.md` are relative to `BRAIN_PATH`.
 
 Two rules to hold even before that file is loaded:
 

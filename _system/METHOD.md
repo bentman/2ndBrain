@@ -1,6 +1,6 @@
 # Method
 
-2ndBrain borrows a small number of ideas from established knowledge-management methods. This page explains what was taken and why. `AGENTS.md` holds the actual rules.
+2ndBrain borrows a small number of ideas from established knowledge-management methods. This page lists what was taken. `AGENTS.md` holds the rules.
 
 ## What Is Used
 
@@ -16,7 +16,7 @@
 
 ## What Is Left Out
 
-Left out on purpose, to keep the system easy to manage:
+Left out to keep the system easy to manage:
 
 - Note IDs and numeric folder codes
 - A raw source store and search tooling
@@ -27,7 +27,7 @@ Add one only when a real, repeated need shows up.
 
 ## Work and Life
 
-The two domains have the same structure and never share content. This keeps employer-confidential material in one folder that can be left out of the backup or handled on its own, and keeps personal material out of work contexts. The separation is a rule the agent follows, not a technical barrier, and work notes committed to a shared backup become part of its history. Each domain has its own inbox, so the two do not mix even before filing.
+The two domains have the same structure, including separate inboxes, and never share content. This keeps employer-confidential material in one folder that can be left out of the backup, and personal material out of work contexts. The separation is a rule the agent follows, not a technical barrier.
 
 ## Files In `_system/`
 

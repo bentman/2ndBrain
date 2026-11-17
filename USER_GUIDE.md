@@ -32,7 +32,7 @@ Inside each domain:
 - `index.md` - a catalog the agent keeps current
 - `log.md` - a running record of what changed
 
-Your notes under `_user/` are private: this repository ignores them, and once enabled a commit guard stops a forced add from committing them here. Only `_user/README.md` and the empty folder skeleton are public. See Backup below for keeping versions of your notes.
+Your notes under `_user/` are private and ignored by this repository. Only `_user/README.md` and the empty folder skeleton are public. See Backup below for keeping versions of your notes.
 
 ## Common Requests
 
