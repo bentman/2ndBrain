@@ -1,0 +1,22 @@
+#!/bin/sh
+# Keeps private notes out of the public 2ndBrain repository.
+# Enable once per clone:  git config core.hooksPath _system/hooks
+# Allowed under _user/: README.md and empty .gitkeep files in the work/life skeleton.
+
+staged=$(git diff --cached --name-only --diff-filter=ACMR | grep '^_user/')
+[ -z "$staged" ] && exit 0
+
+bad=$(printf '%s\n' "$staged" | grep -v -E '^_user/(README\.md|(work|life)/[^/]+/\.gitkeep)$')
+
+for f in $(printf '%s\n' "$staged" | grep '\.gitkeep$'); do
+    [ "$(git cat-file -s ":$f")" = "0" ] || bad="$bad
+$f (.gitkeep must be empty)"
+done
+
+if [ -n "$bad" ]; then
+    echo "Commit blocked: private _user content is staged in the public repository:"
+    printf '%s\n' "$bad" | sed '/^$/d; s/^/  /'
+    echo "Unstage with: git restore --staged <path>"
+    echo "Private notes belong in the backup repository inside _user/."
+    exit 1
+fi

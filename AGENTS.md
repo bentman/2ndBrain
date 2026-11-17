@@ -106,9 +106,10 @@ On "set up my 2ndBrain", or when private files are missing and needed:
 
 1. Copy `_system/templates/user/*.md` to `_user/` and ask the user only what is needed to fill them.
 2. Create `_user/inbox.md`, and `inbox.md`, `index.md`, and `log.md` in `_user/work/` and `_user/life/`. Create `someday.md` when first needed.
-3. Offer to set up Backup below.
+3. Enable the commit guard: `git config core.hooksPath _system/hooks`. It blocks any commit of private `_user` content to this repository, even a forced add. Never bypass it with `--no-verify`.
+4. Offer to set up Backup below.
 
-See `_system/example/` for what filled-in files look like. No scripts are needed.
+See `_system/example/` for what filled-in files look like. The commit guard is the only script.
 
 ## Backup
 

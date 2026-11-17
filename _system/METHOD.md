@@ -39,5 +39,6 @@ The two domains have the same structure and never share content. This keeps empl
 - `templates/user/` - starters for the private `_user/*.md` files
 - `example/` - a small filled-in domain showing the target shape
 - `agent/2ndBrain.agent.md` - portable agent definition
+- `hooks/pre-commit` - commit guard that keeps private `_user` content out of this repository
 
 Keep `_system/` user-neutral. User facts, preferences, and notes belong in `_user/`.

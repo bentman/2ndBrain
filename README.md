@@ -1,6 +1,6 @@
 # 2ndBrain
 
-A plain-text personal knowledge system maintained with an AI agent. Markdown only: no app, no scripts, no build.
+A plain-text personal knowledge system maintained with an AI agent. Markdown only: no app, no build, and one small Git hook as the only script.
 
 ## Repository Layout
 
@@ -15,7 +15,7 @@ A plain-text personal knowledge system maintained with an AI agent. Markdown onl
 2. Open it with an AI agent that reads `AGENTS.md` (Claude Code, GitHub Copilot, Codex, Cursor, and others do so automatically).
 3. Say: `Set up my 2ndBrain`.
 
-The agent creates your private files under `_user/`. Nothing else is needed.
+The agent creates your private files under `_user/` and enables the commit guard (`git config core.hooksPath _system/hooks`), a small hook that blocks private `_user` content from ever being committed to this repository. Nothing else is needed.
 
 ## Use The Agent From Anywhere
 
