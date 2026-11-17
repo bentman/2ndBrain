@@ -1,17 +1,17 @@
-# User Layer
+# Your Private Notes
 
-This folder is the private user layer for 2ndBrain.
+This folder holds your notes and settings.
 
-The 2ndBrain repository ignores everything here except this README and the empty folder skeleton. Real context and notes stay out of it.
+The 2ndBrain repository ignores everything here except this README and the empty folders. This README is public, so keep personal details out of it.
 
 ## Layout
 
 ```text
 _user/
-├── facts.md          compact facts an agent may need
-├── preferences.md    communication and workflow preferences
-├── boundaries.md     privacy and handling rules
-├── inbox.md          holding place for items with no domain yet
+├── facts.md          basic context about you
+├── preferences.md    how the agent should communicate and work
+├── boundaries.md     what may be stored, and where
+├── inbox.md          items with no space chosen yet
 ├── work/
 │   ├── inbox.md  someday.md  index.md  log.md
 │   └── projects/  areas/  knowledge/  archive/  journal/
@@ -20,12 +20,10 @@ _user/
     └── projects/  areas/  knowledge/  archive/  journal/
 ```
 
-The Markdown files are created by the agent on "set up my 2ndBrain", from the starters in `_system/templates/user/`. `someday.md` is created when first needed.
+The agent creates these files when you say "set up my 2ndBrain". `someday.md` appears the first time you need it.
 
 ## Rules
 
-- Work and life never share content. Each domain has its own inbox, index, log, journal, and reviews.
-- To back up, make this folder its own private Git repository (`git init` here, plus a private remote if wanted). See Backup in `AGENTS.md`.
-- Keep user facts out of `AGENTS.md` and `_system/`.
-- Never force-add ignored `_user` content to the 2ndBrain repository. The commit guard (`_system/hooks/pre-commit`) blocks it once enabled.
-- This README is public. Keep personal details out of it.
+- Work and life never share content.
+- To back up your notes, this folder becomes its own private Git repository. `USER_GUIDE.md` shows how.
+- Never add these files to the 2ndBrain repository. The commit guard refuses it once switched on.
