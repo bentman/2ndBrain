@@ -39,36 +39,29 @@ Weekly review for life
 The agent then does three things:
 
 - Creates your private files under `_user/`.
-- Turns on the commit guard (see below).
+- Turns on the commit guard.
 - Offers to set up a private backup for your notes.
 
-## Settings
+`USER_GUIDE.md` covers daily use, settings, backup, and a second machine.
 
-Three files in `_user/` control how the system behaves. Edit them yourself, or tell the agent what to change.
+## Privacy
 
-| File | What it controls |
-|---|---|
-| `preferences.md` | Tone, answer length, your review day, and when the backup is committed and pushed |
-| `boundaries.md` | What may be stored, what never is, and whether work notes are backed up |
-| `facts.md` | Basic context about you |
+| What | Where it lives | Visibility |
+|---|---|---|
+| Rules, workflows, templates | This repository | Public |
+| `_user/README.md` and the empty folders | This repository | Public |
+| Life notes and your settings | `_user/`, and your private backup if you set one up | Private |
+| Work notes | `_user/work/`, and the backup only if you allow it | Private |
 
-## Keeping Your Notes Private
-
-Two things keep your notes out of this public repository:
+Protections:
 
 - **Ignore rules.** Git ignores everything under `_user/` except its README and the empty folders.
-- **Commit guard.** A small hook that refuses any commit containing private notes.
-
-The guard is switched on once per copy of the repository. Setup does this for you. To do it by hand, run this in the repository folder:
-
-```bash
-git config core.hooksPath _system/hooks
-```
+- **Commit guard.** A small hook that refuses any commit containing private notes. It is switched on once per copy of the repository.
 
 Limits:
 
-- The guard does not run when Git merges.
-- Never pull or merge your private backup into this repository. The backup belongs inside `_user/`. The User Guide shows how.
+- The guard does not run when Git merges. Never pull or merge your private backup into this repository.
+- Keeping work and life apart is a rule the agent follows. It is not a technical barrier.
 
 ## Use The Agent From Any Project
 

@@ -11,7 +11,7 @@ Privacy and handling rules. The agent reads this before storing sensitive, perso
 - Never store: [credentials, account numbers, government IDs, ...]
 - Other people: [how to handle details about family, friends, colleagues]
 
-## Across Domains
+## Across Spaces
 - Work content never goes into `_user/life/`, and life content never goes into `_user/work/`.
 - [Any exceptions the user explicitly allows]
 

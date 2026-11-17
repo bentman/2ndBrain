@@ -10,7 +10,7 @@ If you are not sure where something belongs, put it in the inbox. Sort it later.
 
 ## Work And Life
 
-Everything you store lives in one of two spaces: `work` or `life`. The agent's rules call these "domains".
+Everything you store lives in one of two spaces: `work` or `life`.
 
 - They have the same structure.
 - They never share content.
@@ -63,6 +63,21 @@ Your notes are private. This repository ignores them. Only `_user/README.md` and
 
 Use `work` or `life` in any request to choose the space.
 
+## A Week In Use
+
+The files in `_system/example/work/` show one week of a made-up project. This is how they came to be:
+
+| You say | What changes |
+|---|---|
+| `Start work project: team wiki migration` | A project folder appears under `projects/`, with a README and a next action. The project is added to `index.md`. |
+| `Add to work inbox: ask platform team about page history` | One line is added to `inbox.md`. Nothing else happens yet. |
+| `Someday: template for onboarding pages` | One line is added to `someday.md`. |
+| `Save this session` (after a chat about a failed trial) | Progress goes into the project's `notes.md`. The decision goes into `decisions.md`. The lesson becomes a note in `knowledge/`. |
+| `Find notes on redirects` | The agent answers from the knowledge note and names the file. |
+| `Weekly review for work` | The inbox is emptied, the next action is updated, and the week's entry is written under `journal/`. |
+
+Each change is also recorded as one line in `log.md`.
+
 ## The Weekly Review
 
 Once a week, ask for a review of each space. It should take minutes.
@@ -90,6 +105,18 @@ Three files in `_user/` control how the system behaves:
 | `facts.md` | Basic context about you |
 
 Edit them directly, or tell the agent what to change. When you correct the agent, it updates `preferences.md` so the correction sticks.
+
+## The Commit Guard
+
+The commit guard is a small Git hook. It refuses any commit that contains private notes.
+
+It is switched on once per copy of the repository. Setup does this for you. To do it by hand, run this in the 2ndBrain folder:
+
+```bash
+git config core.hooksPath _system/hooks
+```
+
+The guard does not run when Git merges. Never pull or merge your private backup into the 2ndBrain folder.
 
 ## Backup
 
@@ -128,16 +155,23 @@ git fetch origin
 git checkout -B main origin/main
 ```
 
-Then switch on the commit guard, from the 2ndBrain folder:
-
-```bash
-git config core.hooksPath _system/hooks
-```
+Then switch on the commit guard (see The Commit Guard above).
 
 Two habits when you use more than one machine:
 
 - Before you start, update your notes: `git -C _user pull`
 - Never run `git pull` with your private repository's address in the 2ndBrain folder itself. That would mix your private notes into the public repository.
+
+## When Something Goes Wrong
+
+| What you see | What to do |
+|---|---|
+| A commit fails with "Commit blocked" | A private file was about to go into the public repository. The message lists it. Run `git restore --staged <path>` for each file listed. |
+| `git pull` in the 2ndBrain folder says "divergent branches" | You pulled the private repository into the public one. Do not merge or rebase. Your notes belong inside `_user/`; follow A Second Machine above. |
+| A note is in the wrong space | Tell the agent which note and where it belongs. It moves the file and updates both indexes. |
+| Notes are missing on another machine | Run `git -C _user pull`. Work notes kept out of the backup exist only on the machine where they were written. |
+| The agent keeps asking "work or life?" | Name the space in your request, for example "add to my life inbox". |
+| The agent does not follow the system | Tell it: "Read `AGENTS.md` and follow it." |
 
 ## Keep It Simple
 

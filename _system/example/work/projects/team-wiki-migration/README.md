@@ -20,4 +20,5 @@ Nobody reports a broken link in the two weeks after cutover.
 
 ## Related
 - [Notes](notes.md)
+- [Decisions](decisions.md)
 - [Redirects must ship with a migration](../../knowledge/redirects-must-ship-with-a-migration.md)

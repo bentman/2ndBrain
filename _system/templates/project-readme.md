@@ -1,6 +1,6 @@
 # Project README Template
 
-Use for `_user/[domain]/projects/[name]/README.md`.
+Use for `_user/[space]/projects/[name]/README.md`.
 
 ```markdown
 # [Project Name]

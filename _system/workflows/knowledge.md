@@ -4,13 +4,13 @@ Use this when research, a lesson, or an explanation is worth reusing.
 
 ## Route
 
-- Reusable beyond one project -> `_user/[domain]/knowledge/`
+- Reusable beyond one project -> `_user/[space]/knowledge/`
 - Only matters to one project -> that project's `research.md` or `notes.md`
 - One-off answer -> answer directly; no file unless asked
 
 ## Write
 
-1. Search the domain for an existing note. Update it if one exists.
+1. Search the space for an existing note. Update it if one exists.
 2. One idea per note. Make the title state the idea ("Retries need jitter", not "Retry notes").
 3. Start with a one-line `Summary:`.
 4. Capture findings, not raw source material. Link out rather than copying documentation.

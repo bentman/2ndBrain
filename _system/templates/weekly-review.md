@@ -1,9 +1,9 @@
 # Weekly Review Template
 
-Use for `_user/[domain]/journal/[year]/[year]-W[week].md` (ISO week, two digits, for example `2026-W03`). One file per domain per week.
+Use for `_user/[space]/journal/[year]/[year]-W[week].md` (ISO week, two digits, for example `2026-W03`). One file per space per week.
 
 ```markdown
-# [Year]-W[Week] ([domain])
+# [Year]-W[Week] ([space])
 
 ## Done
 - [What moved forward]

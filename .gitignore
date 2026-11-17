@@ -23,6 +23,6 @@ _user/**
 !_user/work/*/.gitkeep
 !_user/life/*/.gitkeep
 
-# Domain folders belong under _user/ only.
+# Space folders belong under _user/ only.
 /work/
 /life/
