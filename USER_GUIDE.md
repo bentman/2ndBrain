@@ -118,6 +118,8 @@ git config core.hooksPath _system/hooks
 
 The guard does not run when Git merges. Never pull or merge your private backup into the 2ndBrain folder.
 
+Never run `git clean` in the 2ndBrain folder. It deletes notes that are not yet backed up.
+
 ## Backup
 
 Your notes are not saved in this repository's history. To keep versions of them, `_user/` becomes its own private Git repository, separate from this one.

@@ -18,8 +18,6 @@
 
 ## What Is Left Out
 
-Not included:
-
 - Note IDs and numbered folders
 - A store of raw source files, and search tooling
 - Task management beyond one next action per project

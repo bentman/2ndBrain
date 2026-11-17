@@ -17,7 +17,7 @@ This repository is public. It ignores everything under `_user/` except `README.m
 These override everything else in this file.
 
 1. **One space per task.** Every task is `work` or `life`. If it is unclear, ask once.
-2. **Never cross spaces.** Do not copy, move, or summarize content from one space into the other. The only exception is moving a misfiled item when the user asks.
+2. **Never cross spaces.** Do not copy, move, or summarize content from one space into the other. The only exception is moving a misfiled item when the user asks; then update the index and log in both spaces.
 3. **Never put private notes in this repository.** Write notes only under `_user/`. Never force-add them, never pull or merge the backup repository into this one, and never bypass the commit guard (`--no-verify`). The guard does not run on merges.
 4. **Never push the backup to a public remote.** Check that the remote is private before every push.
 5. **Read `_user/boundaries.md` first** when storing anything sensitive, personal, or work-derived.
@@ -25,11 +25,10 @@ These override everything else in this file.
 ## Load Order
 
 1. Read this file.
-2. Read `_user/boundaries.md` before storing sensitive, personal, or work-derived information.
-3. Read `_user/facts.md` and `_user/preferences.md` only when user context or tone matters.
-4. Read the active space's `index.md`, then only the files the task needs.
-5. Glance at the active space's `log.md`. If the last `review` entry is more than a week old, say so once at the start of the session. If there is no `review` entry yet, say nothing.
-6. Read `_system/` files only when this file is not enough.
+2. Read `_user/facts.md` and `_user/preferences.md` only when user context or tone matters.
+3. Read the active space's `index.md`, then only the files the task needs.
+4. Glance at the active space's `log.md`. If the last `review` entry is more than a week old, say so once at the start of the session. If there is no `review` entry yet, say nothing.
+5. Read `_system/` files only when this file is not enough.
 
 If the private `_user` files do not exist yet, run **Setup** below.
 
@@ -66,7 +65,7 @@ Keep it shallow: no folder deeper than two levels below a space. If content fits
 
 ## Core Loop
 
-1. **Capture** - Get it written down. If the destination is unclear, use the space's `inbox.md`. If the space itself is unclear, ask once; if asking would interrupt, use `_user/inbox.md`.
+1. **Capture** - Get it written down. If the destination is unclear, use the space's `inbox.md`. If the space itself is unclear and asking would interrupt, use `_user/inbox.md`.
 2. **Organize** - Pick the space, then the folder. Search for an existing file before creating one.
 3. **Distill** - Keep what is useful: decisions, facts, dates, sources, open questions. Start each note with a one-line `Summary:`.
 4. **Express** - Use it: answer, draft, decide. File reusable results back as notes.
