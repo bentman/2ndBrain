@@ -55,7 +55,7 @@ Inside each space, file by how actionable the content is:
 | `archive/` | Finished or inactive projects and areas, moved here whole. |
 | `journal/[year]/[year]-W[week].md` | Weekly summaries, reminders, and time-based context, by ISO week with two digits (`2026-W03`). Raise reminders as `_user/boundaries.md` says. |
 | `inbox.md` | Unsorted quick capture for this space. |
-| `someday.md` | Ideas not being acted on yet. One line each. |
+| `someday.md` | Ideas not being acted on yet. One line each: `- [YYYY-MM-DD] idea`. |
 | `index.md` | Catalog: one line per project, area, and knowledge note, under the headings Projects, Areas, Knowledge, Archive. |
 | `log.md` | Append-only record of what was added, reviewed, or cleaned up. |
 
@@ -114,7 +114,7 @@ Log reviews and lint passes in `log.md` the same way as ingests.
 On "set up my 2ndBrain", or when private files are missing and needed:
 
 1. Copy `_system/templates/user/*.md` to `_user/` and ask the user only what is needed to fill them.
-2. Create `_user/inbox.md`, and `inbox.md`, `index.md`, and `log.md` in `_user/work/` and `_user/life/`. Create `someday.md` when first needed.
+2. Create `_user/inbox.md`, and `inbox.md`, `index.md`, and `log.md` in `_user/work/` and `_user/life/`. Give each `index.md` the headings Projects, Areas, Knowledge, Archive. Create `someday.md` when first needed.
 3. Enable the commit guard from the repository root: `git config core.hooksPath _system/hooks`.
 4. Offer to set up Backup below.
 
@@ -124,14 +124,14 @@ See `_system/example/` for what filled-in files look like.
 
 Private notes are not part of this repository's history. Back them up as a separate private Git repository inside `_user/`:
 
-- Set up once, with the user's agreement: `git init` in `_user/`. The outer repository ignores it. The user adds a private remote if they want an off-machine copy. Create `_user/.gitignore` containing `/README.md` and `.gitkeep`, so the two repositories never track the same file.
+- Set up once, with the user's agreement: `git init -b main` in `_user/`. The outer repository ignores it. The user adds a private remote if they want an off-machine copy. Create `_user/.gitignore` containing `/README.md` and `.gitkeep`, so the two repositories never track the same file.
 - If `_user/.git` exists, commit there after each weekly review, after any large change, and on "back up my notes", with a one-line message. Never commit private content to the outer repository.
 - Push only when the user asks or the Backup setting in `_user/preferences.md` says to.
 - Before every push, check that the remote is private (for GitHub: `gh repo view --json isPrivate`). If it is public or cannot be checked, do not push; tell the user.
 - The backup repository's remote and branch live in `_user/.git`. Never write its URL into tracked files.
 - One backup repository holds both spaces. During setup, ask whether work notes may be backed up. If not, add `/work/` to `_user/.gitignore` before any work note is committed, and record it in `_user/boundaries.md`.
 - Never run `git clean` in the outer repository; it deletes uncommitted private notes.
-- Restore on a new machine: clone this repository, then in `_user/` run `git init`, `git remote add origin <url>`, `git fetch origin`, `git checkout -B main origin/main`.
+- Restore on a new machine: clone this repository, then in `_user/` run `git init -b main`, `git remote add origin <url>`, `git fetch origin`, `git checkout -B main origin/main`.
 
 ## Editing Rules
 

@@ -130,7 +130,7 @@ Let the agent do it during setup, or run this yourself:
 
 ```bash
 cd _user
-git init
+git init -b main
 ```
 
 For a copy off this machine, add a private remote. The agent checks that the remote is private before every push.
@@ -151,7 +151,7 @@ Clone 2ndBrain, then restore your notes inside `_user/`:
 
 ```bash
 cd _user
-git init
+git init -b main
 git remote add origin <your private repository URL>
 git fetch origin
 git checkout -B main origin/main
