@@ -27,4 +27,4 @@ The Markdown files are created by the agent on "set up my 2ndBrain", from the st
 - Work and life never share content. Each domain has its own inbox, index, log, journal, and reviews.
 - To back up, make this folder its own private Git repository (`git init` here, plus a private remote if wanted). The outer repository ignores it. See Backup in `AGENTS.md`.
 - Keep user facts out of `AGENTS.md` and `_system/`.
-- Do not force-add ignored `_user` content unless the user explicitly asks.
+- Never force-add ignored `_user` content to the 2ndBrain repository. The commit guard (`_system/hooks/pre-commit`) blocks it.

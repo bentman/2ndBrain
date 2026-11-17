@@ -21,7 +21,7 @@ Left out on purpose, to keep the system easy to manage:
 - Note IDs and numeric folder codes
 - A raw source store and search tooling
 - Task management beyond one next action per project
-- Scripts, plugins, or any required app
+- Scripts (beyond the one commit guard), plugins, or any required app
 
 Add one only when a real, repeated need shows up.
 

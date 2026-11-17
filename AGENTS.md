@@ -10,7 +10,7 @@ Two layers:
 - `_system/` - reusable method, workflows, and templates
 - `_user/` - one user's private context and notes, split into `work/` and `life/`
 
-This repository is public-safe. It ignores everything under `_user/` except `README.md` and `.gitkeep` skeletons. Never force-add ignored `_user` content to it unless the user explicitly asks. Private notes are versioned only in the separate backup repository described under **Backup**.
+This repository is public-safe. It ignores everything under `_user/` except `README.md` and `.gitkeep` skeletons. Never force-add ignored `_user` content to it; the commit guard in `_system/hooks/` blocks that. Private notes are versioned only in the separate backup repository described under **Backup**.
 
 ## Load Order
 
@@ -88,7 +88,7 @@ Stop when the content is findable and useful. Do not add structure beyond what t
 - Decisions or progress that exist only in chat
 - Content in the wrong domain, or user facts outside `_user/`
 - Duplicated notes, stale claims, broken links
-- Anything Git would track under `_user/` beyond the skeleton
+- Anything Git would track under `_user/` beyond the skeleton, or the commit guard not enabled (`git config core.hooksPath` should print `_system/hooks`)
 
 Log reviews and lint passes in `log.md` the same way as ingests.
 

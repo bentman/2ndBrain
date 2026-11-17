@@ -32,7 +32,7 @@ Inside each domain:
 - `index.md` - a catalog the agent keeps current
 - `log.md` - a running record of what changed
 
-All of `_user/` is private and ignored by this repository. See Backup below for keeping versions of it.
+All of `_user/` is private and ignored by this repository, and a commit guard blocks it from being committed here even by mistake. See Backup below for keeping versions of it.
 
 ## Common Requests
 

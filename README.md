@@ -6,7 +6,7 @@ A plain-text personal knowledge system maintained with an AI agent. Markdown onl
 
 - `AGENTS.md` - the agent's operating rules (single source of truth)
 - `USER_GUIDE.md` - how to use it day to day
-- `_system/` - method, workflows, templates, a worked example, and the portable agent definition
+- `_system/` - method, workflows, templates, a worked example, the portable agent definition, and the commit guard
 - `_user/` - your private context and notes, split into `work/` and `life/` (ignored by this repository)
 
 ## Setup
