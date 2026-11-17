@@ -8,7 +8,7 @@ You talk to the agent. It files your notes, tracks your projects, and finds thin
 
 - **Two separate spaces.** Work and life are stored apart and never mixed.
 - **Private by default.** Your notes never go into this public repository.
-- **Nothing to install.** No app and no build. Just Markdown files and one small Git hook.
+- **Nothing to install.** Markdown files and one small Git hook.
 - **Works with common agents.** Claude Code, GitHub Copilot, Codex, Cursor, and others that read `AGENTS.md`.
 
 What using it looks like:
@@ -65,7 +65,7 @@ The guard is switched on once per copy of the repository. Setup does this for yo
 git config core.hooksPath _system/hooks
 ```
 
-Two limits to know about:
+Limits:
 
 - The guard does not run when Git merges.
 - Never pull or merge your private backup into this repository. The backup belongs inside `_user/`. The User Guide shows how.
@@ -89,7 +89,7 @@ For any other agent, give it this instruction: "Read `AGENTS.md` in my 2ndBrain 
 
 ## Credits
 
-This is a small implementation that borrows ideas from several established methods. It is not an official version of any of them. `_system/METHOD.md` shows what was taken from each.
+Borrows ideas from the methods below. Not an official version of any of them. `_system/METHOD.md` shows what was taken from each.
 
 - [Building a Second Brain](https://www.buildingasecondbrain.com/) and [PARA](https://fortelabs.com/blog/para/) - Tiago Forte
 - [Progressive Summarization](https://fortelabs.com/blog/progressive-summarization-a-practical-technique-for-designing-discoverable-notes/) - Tiago Forte

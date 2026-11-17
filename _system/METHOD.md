@@ -18,7 +18,7 @@
 
 ## What Is Left Out
 
-Left out to keep the system easy to manage:
+Not included:
 
 - Note IDs and numbered folders
 - A store of raw source files, and search tooling
@@ -30,8 +30,6 @@ Add one only when a real, repeated need shows up.
 ## Work And Life
 
 The two spaces have the same structure and never share content. Each has its own inbox.
-
-This keeps employer-confidential material in one folder, which can be left out of the backup. It also keeps personal material out of work contexts.
 
 The separation is a rule the agent follows. It is not a technical barrier.
 
