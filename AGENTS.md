@@ -10,7 +10,7 @@ Two layers:
 - `_system/` - reusable method, workflows, and templates
 - `_user/` - one user's private context and notes, split into `work/` and `life/`
 
-The repository is public-safe. Everything under `_user/` is ignored by Git except `README.md` and `.gitkeep` skeletons. Never force-add ignored `_user` content unless the user explicitly asks.
+This repository is public-safe. It ignores everything under `_user/` except `README.md` and `.gitkeep` skeletons. Never force-add ignored `_user` content to it unless the user explicitly asks. Private notes are versioned only in the separate backup repository described under **Backup**.
 
 ## Load Order
 
@@ -44,7 +44,7 @@ Inside each domain, file by how actionable the content is:
 | `areas/` | Ongoing responsibilities with no end date (health, finances, a team, a system). |
 | `knowledge/` | Reusable notes: concepts, lessons, references, gotchas. |
 | `archive/` | Finished or inactive projects and areas, moved here whole. |
-| `journal/[year]/[year]-W[week].md` | Weekly summaries and time-based context. |
+| `journal/[year]/[year]-W[week].md` | Weekly summaries, reminders, and time-based context. Raise reminders as `_user/boundaries.md` says. |
 | `inbox.md` | Unsorted quick capture for this domain. |
 | `someday.md` | Ideas not being acted on yet. One line each. |
 | `index.md` | Catalog: one line per project, area, and knowledge note. |
@@ -115,7 +115,7 @@ See `_system/example/` for what filled-in files look like. No scripts are needed
 Private notes are not part of this repository's history. Back them up as a separate private Git repository inside `_user/`:
 
 - Set up once, with the user's agreement: `git init` in `_user/`. The outer repository ignores it. The user adds a private remote if they want an off-machine copy.
-- If `_user/.git` exists, commit there after each weekly review and after any large change, with a one-line message. Never commit private content to the outer repository.
+- If `_user/.git` exists, commit there after each weekly review, after any large change, and on "back up my notes", with a one-line message. Never commit private content to the outer repository.
 - Push only when the user asks or the Backup setting in `_user/preferences.md` says to.
 - Before every push, check that the remote is private (for GitHub: `gh repo view --json isPrivate`). If it is public or cannot be checked, do not push; tell the user.
 - The backup repository's remote and branch live in `_user/.git`. Never write its URL into tracked files.

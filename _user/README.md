@@ -2,7 +2,7 @@
 
 This folder is the private user layer for 2ndBrain.
 
-Everything here is ignored by Git except this README and the empty folder skeleton. Real context and notes stay local.
+The 2ndBrain repository ignores everything here except this README and the empty folder skeleton. Real context and notes stay out of it.
 
 ## Layout
 
@@ -20,11 +20,11 @@ _user/
     └── projects/  areas/  knowledge/  archive/  journal/
 ```
 
-The Markdown files are created by the agent on "set up my 2ndBrain", from the starters in `_system/templates/user/`.
+The Markdown files are created by the agent on "set up my 2ndBrain", from the starters in `_system/templates/user/`. `someday.md` is created when first needed.
 
 ## Rules
 
 - Work and life never share content. Each domain has its own inbox, index, log, journal, and reviews.
-- To back up, make this folder its own private Git repository (`git init` here). The outer repository ignores it.
+- To back up, make this folder its own private Git repository (`git init` here, plus a private remote if wanted). The outer repository ignores it. See Backup in `AGENTS.md`.
 - Keep user facts out of `AGENTS.md` and `_system/`.
 - Do not force-add ignored `_user` content unless the user explicitly asks.

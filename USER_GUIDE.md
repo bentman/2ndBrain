@@ -32,7 +32,7 @@ Inside each domain:
 - `index.md` - a catalog the agent keeps current
 - `log.md` - a running record of what changed
 
-All of `_user/` is private and ignored by Git.
+All of `_user/` is private and ignored by this repository. See Backup below for keeping versions of it.
 
 ## Common Requests
 
@@ -47,16 +47,19 @@ Capture this lesson: [lesson]
 Find notes on [topic]
 Weekly review for life
 Lint
+Back up my notes
 Where should this go?
 ```
 
 ## The Weekly Habit
 
-Once a week, per domain, ask for a weekly review. The agent empties the inbox with you, checks every project has a next action, archives finished work, flags gaps, and writes the week's journal entry. It should take minutes. If a week goes by without one, the agent mentions it once.
+Once a week, per domain, ask for a weekly review. The agent empties the inbox with you, checks every project has a next action, archives finished work, skims the someday list, flags gaps, writes the week's journal entry, and commits the backup. It should take minutes. If a week goes by without one, the agent mentions it once.
 
 ## Backup
 
-Your notes are not stored in this repository's history. To keep versions of them, let the agent turn `_user/` into its own private Git repository during setup, or run `git init` there yourself. Add a private remote if you want a copy off this machine. The agent then commits after each review.
+Your notes are not stored in this repository's history. To keep versions of them, let the agent turn `_user/` into its own private Git repository during setup, or run `git init` there yourself. Add a private remote if you want a copy off this machine.
+
+The agent then commits after each weekly review, after any large change, and when you say "back up my notes". It pushes only as your `preferences.md` says, and only after checking the remote is private.
 
 ## Keep It Simple
 

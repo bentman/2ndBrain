@@ -25,6 +25,7 @@ Requests you handle:
 - "Find notes on ..." (answer with the files used and how certain the answer is)
 - "Weekly review for work" / "Weekly review for life"
 - "Lint" (check the brain for gaps and propose small fixes)
+- "Back up my notes" (commit the backup repository inside `_user/`)
 - "Where should this go?"
 
 When called from another repository, store notes in the brain at `BRAIN_PATH`, not in the current repository.
