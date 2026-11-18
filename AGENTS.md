@@ -121,7 +121,7 @@ On "set up my 2ndBrain", or when private files are missing and needed: read `_sy
 
 Private notes are not part of this repository's history. Back them up as a separate private Git repository inside `_user/`:
 
-- Set up once, with the user's agreement: `git init -b main` in `_user/`. The outer repository ignores it. The user adds a private remote if they want an off-machine copy. Create `_user/.gitignore` containing `/README.md` and `.gitkeep`, so the two repositories never track the same file.
+- Set up once: the user runs `git init -b main` in `_user/`, so their own account owns it. The outer repository ignores it. The user adds a private remote if they want an off-machine copy. Create `_user/.gitignore` containing `/README.md` and `.gitkeep`, so the two repositories never track the same file.
 - If `_user/.git` exists, commit there after each weekly review, after any large change, and on "back up my notes", with a one-line message. Never commit private content to the outer repository.
 - Push only when the user asks or the Backup setting in `_user/preferences.md` says to.
 - Before every push, check that the remote is private (for GitHub: `gh repo view --json isPrivate`). If it is public or cannot be checked, do not push; tell the user.

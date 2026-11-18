@@ -74,11 +74,17 @@ This changes a Git setting so Git uses the tracked hook in `_system/hooks/`. Do 
 
 ## 5. Set Up Backup
 
-Only if the answer to question 10 was yes. Follow **Backup** in `AGENTS.md`:
+Only if the answer to question 10 was yes.
 
-1. In `_user/`, run `git init -b main`.
-2. Create `_user/.gitignore` containing `/README.md` and `.gitkeep`. If work notes are not backed up (question 11), also add `/work/`, and record that in `_user/boundaries.md`.
-3. Do not add a remote or push. Tell the user they can add a private remote later.
+1. Create `_user/.gitignore` containing `/README.md` and `.gitkeep`. If work notes are not backed up (question 11), also add `/work/`, and record that in `_user/boundaries.md`.
+2. Do not run `git init` yourself. Tell the user to run it in `_user/`:
+
+   ```
+   git init -b main
+   ```
+
+   Why: the backup repository must be owned by the user's own account. Agents often run commands as a separate sandbox account, and Git refuses to work in a repository owned by a different account.
+3. Tell the user they can add a private remote later. See **Backup** in `AGENTS.md`.
 
 ## 6. Verify And Report
 
