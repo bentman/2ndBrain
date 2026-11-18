@@ -35,6 +35,7 @@ The separation is a rule the agent follows. It is not a technical barrier.
 
 | Path | Purpose |
 |---|---|
+| `SETUP-2ndBrain.md` | Step-by-step setup the agent follows on "set up my 2ndBrain" |
 | `workflows/capture.md` | Inbox and filing |
 | `workflows/projects.md` | Start, run, and close a project |
 | `workflows/knowledge.md` | Write and maintain reusable notes |

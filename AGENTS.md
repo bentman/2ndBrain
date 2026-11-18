@@ -111,27 +111,11 @@ Log reviews and lint passes in `log.md` the same way as ingests.
 
 ## Setup
 
-On "set up my 2ndBrain", or when private files are missing and needed. Follow these steps in order. Setup always asks; never fill answers with assumptions.
+On "set up my 2ndBrain", or when private files are missing and needed: read `_system/SETUP-2ndBrain.md` and follow it step by step.
 
-1. **Check what exists.** List which of these already exist: `_user/facts.md`, `preferences.md`, `boundaries.md`, `inbox.md`, each space's `inbox.md`, `index.md`, `log.md`, `_user/.git`, and the commit guard (`git config core.hooksPath`). Never overwrite an existing file unless the user says to; include the question in step 2.
-2. **Ask, then stop.** Send one message with all of these questions, numbered, and wait for the answers before writing anything. Skip questions whose files exist and are being kept. Accept "skip" or "default" for any answer.
-   1. Name, location or time zone, role
-   2. Tools and platforms that affect how help should be given
-   3. Current focus: one general line for work, one for life
-   4. Tone, length, and format of replies
-   5. What to ask before doing (default: creating folders, restructuring, deleting)
-   6. Weekly review day
-   7. Work: how to handle employer-confidential material (never store, store only in `_user/work/`, or summarize without names), and what must never be stored
-   8. Life: what must never be stored, and how to handle details about other people
-   9. How reminders from journal entries should be raised
-   10. Set up the private backup repository now? (yes or no)
-   11. If yes: may work notes be backed up? When to commit, and when to push?
-3. **Write the files.** Copy `_system/templates/user/*.md` to `_user/` and fill them from the answers. Leave a skipped field empty; never leave `[option | option]` placeholders. Create `_user/inbox.md`, and `inbox.md`, `index.md`, and `log.md` in `_user/work/` and `_user/life/`. Give each `index.md` the headings Projects, Areas, Knowledge, Archive. Create `someday.md` when first needed. Append `- [YYYY-MM-DD] setup | ...` to each space `log.md`.
-4. **Enable the commit guard.** From the repository root, run `git config core.hooksPath _system/hooks`. This sets a Git setting that points to the tracked hook; do not copy or create files in `.git/hooks/`.
-5. **Set up Backup** as described below, if the user said yes.
-6. **Verify and report.** Run `git config core.hooksPath` (should print `_system/hooks`) and `git status --short` in the repository root (should show nothing under `_user/`). Tell the user what was created, what was kept, and any step that failed with the command they need to run.
-
-See `_system/example/` for what filled-in files look like.
+- Setup always asks, one question at a time. Never fill answers with assumptions or write settings before they are answered.
+- Never overwrite an existing `_user/` file unless the user says to.
+- The commit guard is a Git setting (`git config core.hooksPath _system/hooks`), not a file to create in `.git/hooks/`.
 
 ## Backup
 
@@ -142,7 +126,7 @@ Private notes are not part of this repository's history. Back them up as a separ
 - Push only when the user asks or the Backup setting in `_user/preferences.md` says to.
 - Before every push, check that the remote is private (for GitHub: `gh repo view --json isPrivate`). If it is public or cannot be checked, do not push; tell the user.
 - The backup repository's remote and branch live in `_user/.git`. Never write its URL into tracked files.
-- One backup repository holds both spaces. If the user does not allow work notes to be backed up (Setup question 11), add `/work/` to `_user/.gitignore` before any work note is committed, and record it in `_user/boundaries.md`.
+- One backup repository holds both spaces. If the user does not allow work notes to be backed up (asked during Setup), add `/work/` to `_user/.gitignore` before any work note is committed, and record it in `_user/boundaries.md`.
 - Never run `git clean` in the outer repository; it deletes uncommitted private notes.
 - Restore on a new machine: clone this repository, then in `_user/` run `git init -b main`, `git remote add origin <url>`, `git fetch origin`, `git checkout -B main origin/main`.
 

@@ -1,0 +1,2 @@
+# Keep the commit guard runnable from Linux/WSL on Windows checkouts.
+_system/hooks/* text eol=lf
