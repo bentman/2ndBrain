@@ -48,7 +48,7 @@ Your notes are private. This repository ignores them. Only `_user/README.md` and
 
 | Say this | What happens |
 |---|---|
-| `Set up my 2ndBrain` | Creates your private files and settings |
+| `Set up my 2ndBrain` | Asks a few questions one at a time, then creates your private files and settings |
 | `Add to work inbox: [note]` | Saves a quick note to sort later |
 | `Process life inbox` | Goes through the inbox with you and files each item |
 | `Save this session` | Writes the decisions and progress from this chat into the right project |
@@ -110,11 +110,13 @@ Edit them directly, or tell the agent what to change. When you correct the agent
 
 The commit guard is a small Git hook. It refuses any commit that contains private notes.
 
-It is switched on once per copy of the repository. Setup does this for you. To do it by hand, run this in the 2ndBrain folder:
+It is switched on once per copy of the repository. Setup does this for you, or gives you the command if the agent is not allowed to run it. To do it by hand, run this in the 2ndBrain folder:
 
 ```bash
 git config core.hooksPath _system/hooks
 ```
+
+The commands in this guide work the same in PowerShell and bash.
 
 The guard does not run when Git merges. Never pull or merge your private backup into the 2ndBrain folder.
 
@@ -126,12 +128,14 @@ Your notes are not saved in this repository's history. To keep versions of them,
 
 ### Set It Up
 
-Let the agent do it during setup, or run this yourself:
+Run this yourself. Setup asks you to:
 
 ```bash
 cd _user
 git init -b main
 ```
+
+Your own account must own the backup. Agents often run commands as a separate sandbox account, and Git refuses to work in a repository owned by a different account.
 
 For a copy off this machine, add a private remote. The agent checks that the remote is private before every push.
 
@@ -170,6 +174,8 @@ Two habits when you use more than one machine:
 |---|---|
 | A commit fails with "Commit blocked" | A private file was about to go into the public repository. The message lists it. Run `git restore --staged <path>` for each file listed. |
 | `git pull` in the 2ndBrain folder says "divergent branches" | You pulled the private repository into the public one. Do not merge or rebase. Your notes belong inside `_user/`; follow A Second Machine above. |
+| Git in `_user/` says "detected dubious ownership" | An agent created the backup under its sandbox account. If it has no commits yet, delete the `_user/.git` folder and run `git init -b main` in `_user/` yourself. |
+| The agent says a command was blocked | Its sandbox or permissions stopped it. Run the command it gives you, in the folder it names. |
 | A note is in the wrong space | Tell the agent which note and where it belongs. It moves the file and updates both indexes. |
 | Notes are missing on another machine | Run `git -C _user pull`. Work notes kept out of the backup exist only on the machine where they were written. |
 | The agent keeps asking "work or life?" | Name the space in your request, for example "add to my life inbox". |

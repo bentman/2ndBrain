@@ -9,7 +9,7 @@ You talk to the agent. It files your notes, tracks your projects, and finds thin
 - **Two separate spaces.** Work and life are stored apart and never mixed.
 - **Private by default.** Your notes never go into this public repository.
 - **Nothing to install.** Markdown files and one small Git hook.
-- **Works with common agents.** Claude Code, GitHub Copilot, Codex, Cursor, and others that read `AGENTS.md`.
+- **Works with common agents.** Tested with Claude Code, GitHub Copilot, Codex, and Antigravity (`agy`). Other agents that read `AGENTS.md` should work too.
 
 What using it looks like:
 
@@ -26,8 +26,9 @@ Weekly review for life
 |---|---|
 | `AGENTS.md` | The rules the agent follows |
 | `USER_GUIDE.md` | How to use it day to day |
-| `_system/` | The method, workflows, templates, a worked example, the agent definition, and the commit guard |
+| `_system/` | The method, setup steps, workflows, templates, a worked example, the agent definition, and the commit guard |
 | `_user/` | Your private notes, split into `work/` and `life/` |
+| `.gitattributes` | Keeps the commit guard runnable from Linux and WSL |
 | `LICENSE` | MIT license |
 
 ## Setup
@@ -36,11 +37,14 @@ Weekly review for life
 2. Open the folder with an AI agent that reads `AGENTS.md`.
 3. Say: `Set up my 2ndBrain`
 
-The agent then does three things:
+The agent then:
 
+- Asks up to 11 short questions, one at a time. Reply `default`, `skip`, or `rest default` to move quickly.
 - Creates your private files under `_user/`.
 - Turns on the commit guard.
-- Offers to set up a private backup for your notes.
+- Offers a private backup for your notes. You run one command for it yourself, so your own account owns it.
+
+Agents differ in what they may run. Some ask you to approve Git commands; some are blocked by their sandbox and give you the command to run instead. Either way, setup lists anything still pending at the end.
 
 `USER_GUIDE.md` covers daily use, settings, backup, and a second machine.
 
@@ -77,6 +81,8 @@ Limits:
 2. Open your copy and replace `BRAIN_PATH` with the full path to this repository.
 
 Pick one location only. VS Code reads both and would list the agent twice.
+
+Codex and Antigravity (`agy`) have no per-agent file. Their global rules files (`~/.codex/AGENTS.md`, `~/.gemini/AGENTS.md`) apply to every session, so do not copy 2ndBrain rules there. Start them in the 2ndBrain folder instead.
 
 For any other agent, give it this instruction: "Read `AGENTS.md` in my 2ndBrain folder and follow it."
 
